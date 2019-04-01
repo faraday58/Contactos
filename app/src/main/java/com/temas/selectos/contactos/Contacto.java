@@ -4,6 +4,14 @@ public class Contacto {
     private String nmbreContact;
     private String telefono;
     private String Correo;
+    private int idFoto;
+
+    public Contacto(String telefono, String correo, int idFoto) {
+        this.telefono = telefono;
+        Correo = correo;
+        this.idFoto = idFoto;
+    }
+
 
     public String getNmbreContact() {
         return nmbreContact;
@@ -29,11 +37,12 @@ public class Contacto {
         Correo = correo;
     }
 
-    public Contacto(String nmbreContact, String telefono, String correo) {
-        this.setNmbreContact(nmbreContact);
-        this.setTelefono(telefono);
-        setCorreo(correo);
+
+    public int getIdFoto() {
+        return idFoto;
     }
 
-
+    public void setIdFoto(int idFoto) {
+        this.idFoto = idFoto;
+    }
 }
