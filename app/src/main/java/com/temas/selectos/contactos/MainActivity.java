@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void iniciarAdaptador(){
-        ContactoAdaptador adaptador = new ContactoAdaptador(contactos);
+        ContactoAdaptador adaptador = new ContactoAdaptador(contactos,this);
         rcListaContactos.setAdapter(adaptador);
     }
 
@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     {
         contactos = new ArrayList<>();
         contactos.add(new Contacto("55 11 22 13 ","ja@gmail.com",R.drawable.adriana));
-        contactos.add(new Contacto("55 11 23 13 ","ka@gmail.com",R.drawable.karla));
+        contactos.add(new Contacto("55 25 11 07 79 ","ka@gmail.com",R.drawable.karla));
         contactos.add(new Contacto("55 10 22 14 ","a@gmail.com",R.drawable.luisa));
     }
 }
