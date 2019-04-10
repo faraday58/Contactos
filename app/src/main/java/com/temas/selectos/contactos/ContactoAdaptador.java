@@ -9,6 +9,7 @@ import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -18,7 +19,6 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
 import java.util.ArrayList;
 
@@ -58,6 +58,11 @@ public class ContactoAdaptador extends RecyclerView.Adapter <ContactoAdaptador.C
                     switch(item.getItemId())
                     {
                         case R.id.mnBtnEditar:
+
+                            Intent edtIntent = new Intent(activity,EditarContacto.class);
+                            edtIntent.putExtra("Telefono",contacto.getTelefono());
+                            edtIntent.putExtra("Correo",contacto.getCorreo());
+                            activity.startActivity(edtIntent);
 
                             Toast.makeText(activity.getApplicationContext(),"Selccionaste editar",Toast.LENGTH_LONG).show();
                             break;
