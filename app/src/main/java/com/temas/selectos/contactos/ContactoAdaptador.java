@@ -11,12 +11,14 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import java.util.ArrayList;
 
@@ -46,6 +48,27 @@ public class ContactoAdaptador extends RecyclerView.Adapter <ContactoAdaptador.C
             contactoViewHolder.txtv_correo.setText(contacto.getCorreo());
             contactoViewHolder.txtv_telefono.setText(contacto.getTelefono());
             contactoViewHolder.imgFoto.setImageResource(contacto.getIdFoto());
+
+            contactoViewHolder.tb_Contacto.inflateMenu(R.menu.menu_layout);
+
+            contactoViewHolder.tb_Contacto.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+                @Override
+                public boolean onMenuItemClick(MenuItem item) {
+
+                    switch(item.getItemId())
+                    {
+                        case R.id.mnBtnEditar:
+
+                            Toast.makeText(activity.getApplicationContext(),"Selccionaste editar",Toast.LENGTH_LONG).show();
+                            break;
+
+                        case R.id.mnBtnCmpartir:
+                            Toast.makeText(activity.getApplicationContext(),"Selccionaste compartir",Toast.LENGTH_LONG).show();
+                            break;
+                    }
+                    return false;
+                }
+            });
 
             contactoViewHolder.imgbTelefono.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -105,6 +128,7 @@ public class ContactoAdaptador extends RecyclerView.Adapter <ContactoAdaptador.C
         private TextView txtv_telefono;
         private ImageButton imgbTelefono;
         private ImageButton imgbCorreo;
+        private Toolbar tb_Contacto;
 
         public ContactoViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -113,7 +137,7 @@ public class ContactoAdaptador extends RecyclerView.Adapter <ContactoAdaptador.C
             txtv_correo = itemView.findViewById(R.id.txtvCorreo);
             imgbCorreo = itemView.findViewById(R.id.imgbCorreo);
             imgbTelefono = itemView.findViewById(R.id.imgbTelefono);
-
+            tb_Contacto=itemView.findViewById(R.id.tb_Contacto);
         }
     }
 }
