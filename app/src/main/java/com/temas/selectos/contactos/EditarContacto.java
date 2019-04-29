@@ -1,5 +1,6 @@
 package com.temas.selectos.contactos;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -8,6 +9,7 @@ import android.net.Uri;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -64,12 +66,16 @@ public class EditarContacto extends AppCompatActivity {
 
     }
 
-    public void SalvaImagen(Context contex,Bitmap Imagen)
+    public void SalvaImagen(Context context,Bitmap Imagen)
     {
         String nombreDirectorio="/CarpetaImagen";
         String nombreArchivo="imagen";
         String  file_path= Environment.getExternalStorageDirectory().getAbsolutePath()+nombreDirectorio;
         String CurrentDateAndTime = getCurrentDateAndTime();
+
+        //Código para pedir confirmación de permisos
+        ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},1);
+
 
         File dir= new File(file_path);
 
@@ -85,15 +91,15 @@ public class EditarContacto extends AppCompatActivity {
             fo.flush();
             fo.close();
             VerificaArchivoGuardado(file);
-            Toast.makeText(contex,"Se ha guardado la imagen de forma correcta",Toast.LENGTH_LONG).show();
+            Toast.makeText(context,"Se ha guardado la imagen de forma correcta",Toast.LENGTH_LONG).show();
 
         }catch (FileNotFoundException e)
         {
-            Toast.makeText(contex,"No se pudo guardar la imagen", Toast.LENGTH_LONG).show();
+            Toast.makeText(context,"No se pudo guardar la imagen", Toast.LENGTH_LONG).show();
 
         }catch (IOException e)
         {
-            Toast.makeText(contex,"No se pudo guardar la imagen", Toast.LENGTH_LONG).show();
+            Toast.makeText(context,"No se pudo guardar la imagen", Toast.LENGTH_LONG).show();
         }
 
 
